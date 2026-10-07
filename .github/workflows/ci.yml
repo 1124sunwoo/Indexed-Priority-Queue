@@ -1,0 +1,11 @@
+name: C++ tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test
+        run: make test demo
+      - name: Check memory and undefined behavior
+        run: make sanitize
